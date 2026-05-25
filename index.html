@@ -1,0 +1,1895 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>めんそーれ！沖縄講演</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ocean: #00B4D8;
+    --deep: #0077B6;
+    --sky: #90E0EF;
+    --sand: #FFD60A;
+    --coral: #FF6B6B;
+    --hibiscus: #FF006E;
+    --green: #06D6A0;
+    --white: #FFFFFF;
+    --dark: #1a1a2e;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Zen Maru Gothic', 'Noto Sans JP', sans-serif;
+    background: #000;
+    overflow-x: hidden;
+  }
+
+  /* ===== SLIDE BASE ===== */
+  .slide {
+    width: 100%;
+    height: 100dvh;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 60px 80px 50px;
+    overflow: hidden;
+  }
+
+  /* ===== NAV ===== */
+  .nav-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 24px;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(8px);
+  }
+  .nav-title { color: #fff; font-size: 13px; font-weight: 700; }
+  .nav-btns { display: flex; gap: 8px; }
+  .nav-btn {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    transition: all 0.2s;
+  }
+  .nav-btn:hover { background: rgba(255,255,255,0.3); }
+  .slide-counter {
+    color: rgba(255,255,255,0.6);
+    font-size: 12px;
+  }
+
+  /* ===== SLIDE 1: COVER ===== */
+  #slide-1 {
+    background: linear-gradient(160deg, #0077B6 0%, #00B4D8 40%, #06D6A0 80%, #90E0EF 100%);
+    text-align: center;
+  }
+  .wave-deco {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 120px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'%3E%3Cpath fill='%23FFD60A' fill-opacity='0.3' d='M0,64 C360,0 720,128 1080,64 C1260,32 1380,48 1440,64 L1440,120 L0,120 Z'/%3E%3Cpath fill='%23FF6B6B' fill-opacity='0.2' d='M0,80 C400,20 800,120 1200,60 C1320,40 1400,70 1440,80 L1440,120 L0,120 Z'/%3E%3C/svg%3E") no-repeat bottom;
+    background-size: cover;
+  }
+  .cover-emoji { font-size: 80px; margin-bottom: 10px; animation: bounce 2s infinite; }
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-15px)} }
+  .cover-title {
+    font-size: clamp(48px, 8vw, 96px);
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 4px 4px 0 #0077B6, 6px 6px 0 rgba(0,0,0,0.3);
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+  .cover-subtitle {
+    font-size: clamp(18px, 3vw, 28px);
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+    padding: 10px 30px;
+    border-radius: 40px;
+    margin-bottom: 24px;
+    backdrop-filter: blur(4px);
+    border: 2px solid rgba(255,255,255,0.4);
+  }
+  .cover-school {
+    font-size: 20px;
+    color: rgba(255,255,255,0.9);
+    font-weight: 700;
+    background: rgba(0,0,0,0.2);
+    padding: 8px 24px;
+    border-radius: 30px;
+  }
+  .hibiscus-deco {
+    position: absolute;
+    font-size: 120px;
+    opacity: 0.15;
+    animation: spin-slow 20s linear infinite;
+  }
+  @keyframes spin-slow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+  .hib-1 { top: -30px; left: -30px; }
+  .hib-2 { top: -30px; right: -30px; animation-direction: reverse; }
+  .hib-3 { bottom: 60px; left: 10%; font-size: 80px; }
+  .hib-4 { bottom: 60px; right: 10%; font-size: 80px; animation-direction: reverse; }
+
+  /* ===== SLIDE 2: ハイサイ（全面海写真+左揃え） ===== */
+  #slide-2 {
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 10%;
+  }
+
+  /* ===== SLIDE 3: 自己紹介 ===== */
+  #slide-3 {
+    background: linear-gradient(160deg, #023E8A 0%, #0077B6 50%, #00B4D8 100%);
+    text-align: center;
+  }
+  .profile-card {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 30px;
+    padding: 40px 60px;
+    max-width: 800px;
+    width: 100%;
+  }
+  .profile-avatar {
+    width: 120px; height: 120px;
+    background: linear-gradient(135deg, #FFD60A, #FF6B6B);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    margin: 0 auto 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+  .profile-name {
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .profile-nick {
+    font-size: clamp(20px, 3vw, 32px);
+    color: #FFD60A;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+  .profile-items {
+    list-style: none;
+    text-align: left;
+    display: inline-block;
+  }
+  .profile-items li {
+    font-size: clamp(16px, 2vw, 22px);
+    color: #fff;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .profile-items li span { font-size: 24px; }
+
+  /* ===== SLIDE 4: お店紹介 ===== */
+  #slide-4 {
+    background: linear-gradient(135deg, #06D6A0 0%, #0077B6 100%);
+    text-align: center;
+  }
+
+  /* ===== SLIDE 5: 兄弟都市 ===== */
+  #slide-5 {
+    background: linear-gradient(135deg, #FF6B6B 0%, #FFD60A 100%);
+    text-align: center;
+  }
+
+  /* ===== SLIDE 6: 今日はユンタク ===== */
+  #slide-6 {
+    background: linear-gradient(160deg, #023E8A 0%, #0077B6 50%, #00B4D8 100%);
+    text-align: center;
+  }
+
+  /* ===== GENERIC SLIDE STYLES ===== */
+  .slide-section {
+    background: linear-gradient(135deg, #0077B6 0%, #00B4D8 100%);
+  }
+  .slide-question {
+    background: linear-gradient(135deg, #FF006E 0%, #FF6B6B 100%);
+  }
+  .slide-answer {
+    background: linear-gradient(135deg, #06D6A0 0%, #0077B6 100%);
+  }
+  .slide-info {
+    background: linear-gradient(135deg, #023E8A 0%, #0077B6 100%);
+  }
+  .slide-quiz-bg {
+    background: linear-gradient(135deg, #6A0080 0%, #C2185B 50%, #FF006E 100%);
+  }
+  .slide-food {
+    background: linear-gradient(160deg, #0077B6 0%, #023E8A 100%);
+  }
+  .slide-wow {
+    background: linear-gradient(135deg, #FF6B6B 0%, #FF006E 50%, #FFD60A 100%);
+  }
+  .slide-calm {
+    background: linear-gradient(160deg, #06D6A0 0%, #0077B6 100%);
+  }
+  .slide-lang {
+    background: linear-gradient(135deg, #023E8A 0%, #0077B6 50%, #00B4D8 100%);
+  }
+  .slide-music {
+    background: linear-gradient(135deg, #FF006E 0%, #7B1FA2 55%, #0077B6 100%);
+  }
+  .slide-end {
+    background: linear-gradient(160deg, #FF6B6B 0%, #FFD60A 40%, #00B4D8 100%);
+  }
+
+  /* ===== COMMON ELEMENTS ===== */
+  .slide-label {
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+  }
+  .slide-title {
+    font-size: clamp(36px, 6vw, 80px);
+    font-weight: 900;
+    color: #fff;
+    text-align: center;
+    text-shadow: 3px 3px 0 rgba(0,0,0,0.25);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+  .slide-subtitle {
+    font-size: clamp(18px, 2.5vw, 30px);
+    color: rgba(255,255,255,0.9);
+    text-align: center;
+    margin-bottom: 24px;
+    font-weight: 700;
+  }
+  .big-emoji {
+    font-size: clamp(60px, 10vw, 120px);
+    margin-bottom: 16px;
+    display: block;
+    animation: bounce 2s infinite;
+  }
+  .img-real {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    display: block;
+  }
+  .img-frame {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 20px;
+    margin: 0 auto;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+  .img-frame.tall { max-width: 700px; height: 380px; }
+  .img-frame.med  { max-width: 700px; height: 260px; }
+  .img-frame.quiz { max-width: 680px; height: 200px; }
+  .img-frame.sm   { max-width: 600px; height: 220px; }
+  .img-placeholder {
+    width: 100%;
+    max-width: 700px;
+    height: 350px;
+    background: rgba(255,255,255,0.15);
+    border: 3px dashed rgba(255,255,255,0.5);
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.8);
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 auto;
+  }
+  .img-placeholder .ph-icon { font-size: 60px; margin-bottom: 10px; }
+  .img-placeholder.tall { height: 450px; }
+  .img-placeholder.med { height: 280px; }
+  .question-box {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(8px);
+    border: 3px solid rgba(255,255,255,0.4);
+    border-radius: 30px;
+    padding: 30px 50px;
+    max-width: 800px;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .question-label {
+    font-size: 20px;
+    color: #FFD60A;
+    font-weight: 900;
+    margin-bottom: 10px;
+  }
+  .question-text {
+    font-size: clamp(26px, 4vw, 48px);
+    color: #fff;
+    font-weight: 900;
+    line-height: 1.3;
+  }
+  .answer-reveal {
+    background: #FFD60A;
+    border-radius: 24px;
+    padding: 24px 50px;
+    display: inline-block;
+    margin: 10px auto;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+  .answer-reveal .answer-label {
+    font-size: 18px;
+    color: rgba(0,0,0,0.6);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .answer-reveal .answer-text {
+    font-size: clamp(32px, 6vw, 72px);
+    color: #0077B6;
+    font-weight: 900;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+  }
+  .tag-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.25);
+    border: 2px solid rgba(255,255,255,0.5);
+    color: #fff;
+    padding: 6px 20px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 4px;
+  }
+  .star-deco {
+    position: absolute;
+    font-size: 40px;
+    opacity: 0.15;
+    animation: spin-slow 15s linear infinite;
+  }
+  .info-card {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(6px);
+    border: 2px solid rgba(255,255,255,0.25);
+    border-radius: 20px;
+    padding: 20px 28px;
+    flex: 1;
+    min-width: 200px;
+  }
+  .info-card .ic-title {
+    font-size: 16px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .info-card .ic-body {
+    font-size: clamp(18px, 2.5vw, 28px);
+    color: #fff;
+    font-weight: 900;
+    line-height: 1.3;
+  }
+  .cards-row {
+    display: flex;
+    gap: 16px;
+    width: 100%;
+    max-width: 900px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .wow-bubble {
+    background: #FFD60A;
+    border-radius: 20px;
+    padding: 16px 32px;
+    display: inline-block;
+    font-size: clamp(24px, 4vw, 48px);
+    font-weight: 900;
+    color: #0077B6;
+    margin: 8px;
+    transform: rotate(-3deg);
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+  }
+  .wow-bubble.r2 { transform: rotate(3deg); color: #FF006E; }
+  .compare-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+    max-width: 900px;
+  }
+  .compare-card {
+    background: rgba(255,255,255,0.12);
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 24px;
+    padding: 24px 28px;
+    text-align: center;
+  }
+  .compare-card .cc-icon { font-size: 48px; margin-bottom: 10px; }
+  .compare-card .cc-title {
+    font-size: 22px;
+    color: #FFD60A;
+    font-weight: 900;
+    margin-bottom: 12px;
+  }
+  .compare-card .cc-body {
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.6;
+  }
+  .lang-card {
+    background: rgba(255,255,255,0.1);
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+    padding: 20px 30px;
+    text-align: center;
+    min-width: 180px;
+  }
+  .lang-card .lc-okinawa {
+    font-size: clamp(30px, 5vw, 56px);
+    font-weight: 900;
+    color: #FFD60A;
+    margin-bottom: 6px;
+  }
+  .lang-card .lc-meaning {
+    font-size: clamp(16px, 2vw, 22px);
+    color: #fff;
+    font-weight: 700;
+  }
+  .music-card {
+    background: rgba(255,255,255,0.1);
+    border: 2px solid rgba(255,255,255,0.25);
+    border-radius: 20px;
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    max-width: 700px;
+  }
+  .music-card .mc-icon { font-size: 48px; flex-shrink: 0; }
+  .music-card .mc-title {
+    font-size: clamp(20px, 3vw, 32px);
+    color: #FFD60A;
+    font-weight: 900;
+  }
+  .music-card .mc-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.75);
+    margin-top: 4px;
+  }
+  .bottom-deco {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 80px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 80'%3E%3Cpath fill='rgba(255,255,255,0.08)' d='M0,40 C360,0 720,80 1080,40 C1260,20 1380,50 1440,40 L1440,80 L0,80 Z'/%3E%3C/svg%3E") no-repeat bottom;
+    background-size: cover;
+    pointer-events: none;
+  }
+  .slide-number-badge {
+    position: absolute;
+    top: 60px;
+    right: 40px;
+    background: rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.8);
+    border-radius: 50%;
+    width: 44px; height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 900;
+  }
+  .progress-bar {
+    position: fixed;
+    top: 44px;
+    left: 0;
+    height: 3px;
+    background: #FFD60A;
+    z-index: 9998;
+    transition: width 0.3s;
+    box-shadow: 0 0 8px #FFD60A;
+  }
+
+  /* ===== FOOD PHOTO GRID ===== */
+  .food-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 860px;
+    width: 100%;
+  }
+  .food-item {
+    background: rgba(255,255,255,0.12);
+    border: 2px solid rgba(255,255,255,0.25);
+    border-radius: 20px;
+    overflow: hidden;
+    text-align: center;
+  }
+  .food-photo {
+    width: 100%;
+    height: 160px;
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 64px;
+    overflow: hidden;
+  }
+  .food-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .food-name {
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 900;
+    color: #fff;
+  }
+
+  /* ===== SPECIAL ANIMATIONS ===== */
+  @keyframes tada {
+    0%{transform:scale(1)} 10%{transform:scale(0.9) rotate(-3deg)} 20%{transform:scale(1.1) rotate(3deg)} 30%{transform:scale(1.1) rotate(-3deg)} 40%{transform:scale(1.1) rotate(3deg)} 50%{transform:scale(1.1) rotate(-3deg)} 60%{transform:scale(1.1) rotate(3deg)} 70%{transform:scale(1.1) rotate(-3deg)} 80%{transform:scale(1.1) rotate(3deg)} 90%{transform:scale(1.1) rotate(-3deg)} 100%{transform:scale(1) rotate(0)}
+  }
+  .tada { animation: tada 1.5s ease infinite; }
+  @keyframes flash {
+    0%,100%{opacity:1} 50%{opacity:0.3}
+  }
+  .flash { animation: flash 1s ease infinite; }
+  .timeline-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 16px;
+    text-align: left;
+  }
+  .timeline-dot {
+    width: 40px; height: 40px;
+    background: #FFD60A;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+  .timeline-content { flex: 1; }
+  .timeline-content .tl-title {
+    font-size: clamp(16px, 2vw, 24px);
+    color: #fff;
+    font-weight: 900;
+    margin-bottom: 4px;
+  }
+  .timeline-content .tl-body {
+    font-size: clamp(14px, 1.5vw, 18px);
+    color: rgba(255,255,255,0.8);
+  }
+  .section-divider {
+    width: 80px;
+    height: 5px;
+    background: #FFD60A;
+    border-radius: 3px;
+    margin: 0 auto 20px;
+  }
+  .clap-row {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .clap-tag {
+    background: rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.4);
+    color: #fff;
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: 900;
+  }
+  .slide-photo {
+    width: 100%;
+    border-radius: 24px;
+    object-fit: cover;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+    display: block;
+    margin: 0 auto;
+  }
+  .slide-photo.tall { max-width: 700px; height: 420px; }
+  .slide-photo.med  { max-width: 700px; height: 260px; }
+  .slide-photo.sm   { max-width: 700px; height: 200px; }
+  .slide-photo.sq   { max-width: 600px; height: 240px; }
+  .wikimedia-credit {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    margin-top: 4px;
+  }
+
+  /* ===== ONE-PAGE FIT (全スライド1画面に収める・横長最適化) ===== */
+  .slide {
+    height: 100dvh;
+    min-height: unset;
+    padding: clamp(48px,6vh,60px) clamp(20px,4vw,72px) clamp(12px,2vh,28px);
+    gap: clamp(6px,1.4vh,16px);
+    overflow: hidden;
+  }
+  .big-emoji {
+    font-size: clamp(36px,7vh,70px) !important;
+    margin-bottom: 0 !important;
+  }
+  .slide-title {
+    font-size: clamp(28px,5.5vh,80px) !important;
+    margin-bottom: 0 !important;
+    line-height: 1.1 !important;
+  }
+  .slide-subtitle {
+    font-size: clamp(16px,2.5vh,32px) !important;
+    margin-bottom: 0 !important;
+  }
+  .slide-label { margin-bottom: 4px; font-size: 16px; letter-spacing: 4px; }
+  .section-divider { margin: 0 auto clamp(6px,1.2vh,16px); }
+  .speech-bubble { padding: clamp(12px,2vh,24px) clamp(20px,3vw,44px); }
+  .speech-bubble::after { display: none; }
+  .speech-bubble p { font-size: clamp(16px,2.2vh,28px) !important; }
+  .img-frame.tall { height: clamp(200px,40vh,400px); }
+  .img-frame.med  { height: clamp(140px,28vh,280px); }
+  .img-frame.sm   { height: clamp(110px,22vh,240px); }
+  .img-frame.quiz { height: clamp(160px,34vh,300px); max-width: 760px; }
+  .cards-row { gap: clamp(10px,1.5vh,20px); }
+  .info-card { padding: clamp(14px,2vh,24px) clamp(16px,2.5vw,32px); }
+  .info-card .ic-title { margin-bottom: 6px; font-size: 18px; }
+  .info-card .ic-body { font-size: clamp(18px,2.5vh,30px) !important; }
+  .compare-row { gap: clamp(10px,1.5vh,20px); }
+  .compare-card { padding: clamp(14px,2vh,26px) clamp(16px,2.5vw,32px); }
+  .compare-card .cc-body { font-size: clamp(15px,2vh,20px); line-height: 1.6; }
+  .timeline-item { margin-bottom: clamp(6px,1.2vh,16px); }
+  .tl-title { font-size: clamp(17px,2.4vh,28px) !important; }
+  .tl-body  { font-size: clamp(14px,1.8vh,20px) !important; }
+  .profile-card { padding: clamp(20px,3vh,44px) clamp(24px,4vw,64px); }
+  .profile-name { font-size: clamp(28px,4.5vh,60px) !important; margin-bottom: 4px; }
+  .profile-nick { font-size: clamp(18px,2.8vh,34px) !important; margin-bottom: 12px; }
+  .profile-items li { font-size: clamp(16px,2.2vh,24px) !important; padding: 6px 0; }
+  .profile-avatar { width: clamp(90px,12vh,130px); height: clamp(90px,12vh,130px); font-size: 56px; margin-bottom: clamp(10px,1.6vh,20px); }
+  .answer-reveal { padding: clamp(14px,2.5vh,28px) clamp(28px,4.5vw,56px); }
+  .answer-reveal .answer-label { font-size: 18px; }
+  .answer-reveal .answer-text { font-size: clamp(36px,7vh,86px) !important; }
+  .question-box { padding: clamp(16px,2.5vh,32px) clamp(24px,3.5vw,56px); max-width: 900px; }
+  .question-label { font-size: 20px; margin-bottom: 12px; }
+  .question-text { font-size: clamp(26px,5vh,58px) !important; }
+  .lang-card { padding: clamp(10px,1.8vh,22px) clamp(18px,3vw,36px); min-width: 180px; }
+  .lang-card .lc-okinawa { font-size: clamp(30px,5.5vh,64px) !important; }
+  .lang-card .lc-meaning  { font-size: clamp(16px,2.4vh,26px) !important; }
+  .music-card { padding: clamp(12px,1.8vh,22px) clamp(16px,2.5vw,30px); }
+  .music-card .mc-icon { font-size: 42px; }
+  .music-card .mc-title { font-size: clamp(18px,2.8vh,34px) !important; }
+  .music-card .mc-sub { font-size: clamp(13px,1.6vh,18px); }
+  .food-grid { gap: clamp(8px,1.2vh,18px); }
+  .food-photo { height: clamp(90px,16vh,170px); font-size: 56px; }
+  .food-name  { padding: 8px 10px; font-size: clamp(14px,1.8vh,20px); }
+  .cover-emoji { font-size: clamp(48px,9vh,80px) !important; margin-bottom: 6px; }
+  .cover-title { font-size: clamp(38px,8vh,96px) !important; margin-bottom: 14px; }
+  .cover-subtitle { font-size: clamp(15px,2.5vh,26px) !important; padding: 8px 22px; margin-bottom: 16px; }
+  .cover-school { font-size: clamp(15px,2vh,22px); }
+  .greeting-big { font-size: clamp(52px,10vh,130px) !important; margin-bottom: 0; }
+  .greeting-ruby { font-size: clamp(20px,3.5vh,44px) !important; margin-bottom: 18px; }
+  .wow-bubble { font-size: clamp(20px,3.2vh,48px) !important; padding: 10px 24px; margin: 5px; }
+  .clap-tag { font-size: clamp(15px,2vh,20px); padding: 8px 22px; }
+  .clap-row { margin-top: clamp(6px,1vh,18px); gap: 10px; }
+  .bottom-deco { height: 50px; }
+  .timeline-dot { width: 40px; height: 40px; font-size: 18px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav-bar">
+  <div class="nav-title">🌺 めんそーれ！沖縄講演 ｜ 第2中学校</div>
+  <div class="nav-btns">
+    <button class="nav-btn" onclick="prevSlide()">◀ もどる</button>
+    <button class="nav-btn" onclick="nextSlide()">すすむ ▶</button>
+  </div>
+  <div class="slide-counter" id="slide-counter">1 / 49</div>
+</div>
+<div class="progress-bar" id="progress-bar" style="width:2.04%"></div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 1: 表紙 -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-1" data-slide="1">
+  <div class="hib-1 hibiscus-deco">🌺</div>
+  <div class="hib-2 hibiscus-deco">🌸</div>
+  <div class="hib-3 hibiscus-deco">🐠</div>
+  <div class="hib-4 hibiscus-deco">⭐</div>
+  <div class="wave-deco"></div>
+  <div class="cover-emoji">🌺</div>
+  <div class="cover-title">めんそーれ！<br>沖縄講演</div>
+  <div class="cover-subtitle">〜 沖縄の文化・食・言葉・音楽を楽しもう！ 〜</div>
+  <div class="cover-school">🏫 豊中市立 第2中学校のみなさんへ</div>
+  <div class="slide-number-badge">1</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 2: ハイサイ！ -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-2" data-slide="2" style="display:none; background-image:url('https://upload.wikimedia.org/wikipedia/commons/5/5c/Emerald_green_%2852116054587%29.jpg'); background-size:cover; background-position:center; background-repeat:no-repeat;">
+  <!-- Dark left-to-right overlay for readability -->
+  <div style="position:absolute;inset:0;background:linear-gradient(105deg,rgba(0,10,40,0.88) 0%,rgba(0,25,80,0.65) 50%,rgba(0,50,120,0.15) 100%);pointer-events:none;"></div>
+  <div class="slide-number-badge">2</div>
+  <!-- Content: left-aligned for landscape feel -->
+  <div style="position:relative;z-index:1;width:100%;max-width:1400px;margin:0 auto;display:flex;flex-direction:column;align-items:flex-start;">
+    <div style="font-size:clamp(10px,1.1vw,15px);letter-spacing:0.45em;color:rgba(144,224,239,0.85);margin-bottom:18px;font-weight:700;text-transform:uppercase;">OKINAWA — GREETING</div>
+    <div style="font-size:clamp(72px,13vw,170px);font-weight:900;color:#fff;line-height:0.92;text-shadow:0 6px 50px rgba(0,0,0,0.45);margin-bottom:22px;letter-spacing:-2px;">はいさい！</div>
+    <div style="width:90px;height:5px;background:linear-gradient(to right,#00B4D8,#06D6A0);margin-bottom:26px;border-radius:3px;"></div>
+    <div style="font-size:clamp(20px,3vw,40px);color:rgba(255,255,255,0.95);font-weight:700;margin-bottom:18px;letter-spacing:0.04em;">沖縄語で「こんにちは！」</div>
+    <div style="font-size:clamp(14px,1.7vw,22px);color:rgba(200,235,255,0.82);font-weight:400;line-height:1.9;">今日は沖縄の文化・食・言葉・音楽を<br>一緒に楽しんでいきましょう！</div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 3: 自己紹介① -->
+<!-- ============================================================ -->
+<div class="slide slide-info" id="slide-3" data-slide="3" style="display:none;">
+  <div class="slide-number-badge">3</div>
+  <div class="slide-label">自己紹介</div>
+  <div class="slide-title" style="font-size: clamp(28px,4vw,52px); margin-bottom: 24px;">まずは自己紹介から！</div>
+  <div class="profile-card">
+    <div class="profile-avatar" style="overflow:hidden; background:none; padding:0;">
+      <img src="沖縄講演会用/岩ちゃん_三線.png" style="width:100%;height:100%;object-fit:cover;object-position:22% 10%;display:block;transform:scale(1.1);transform-origin:22% 10%;" alt="岩本圭介">
+    </div>
+    <div class="profile-name">岩本 圭介</div>
+    <div class="profile-nick">〜 ガンちゃん 〜</div>
+    <ul class="profile-items">
+      <li><span>🌺</span> 沖縄県 <b>名護市</b> 出身</li>
+      <li><span>🏠</span> 現在は 大阪府 <b>豊中市 曽根</b> 在住</li>
+      <li><span>🎵</span> 三線（さんしん）が弾けます</li>
+      <li><span>😄</span> みんな「ガンちゃん」って呼んでね！</li>
+    </ul>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 4: お店紹介 -->
+<!-- ============================================================ -->
+<div class="slide slide-calm" id="slide-4" data-slide="4" style="display:none;">
+  <div class="slide-number-badge">4</div>
+  <div class="slide-label">ガンちゃんのお仕事</div>
+  <div class="slide-title">沖縄ダイニングバー<br>CHATASO（ちゃたそ）</div>
+  <div class="cards-row">
+    <div class="info-card">
+      <div class="ic-title">📍 場所</div>
+      <div class="ic-body">阪急曽根駅</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-title">🏮 営業年数</div>
+      <div class="ic-body">開業して9年！</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-title">🥡 新業態</div>
+      <div class="ic-body">沖縄専門テイクアウト店 2年目</div>
+    </div>
+  </div>
+  <div style="display:flex; gap:14px; width:100%; max-width:700px; margin-top:20px;">
+    <img src="沖縄講演会用/CHATASO店前.jpg" class="img-real" style="flex:1; height:240px; border-radius:20px; object-fit:cover;">
+    <img src="沖縄講演会用/店内-4.jpg"     class="img-real" style="flex:1; height:240px; border-radius:20px; object-fit:cover;">
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 5: 豊中と沖縄は兄弟都市 -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-5" data-slide="5" style="display:none; background: linear-gradient(135deg,#FF6B6B,#FFD60A);">
+  <div class="slide-number-badge">5</div>
+  <div class="slide-label">知ってた？</div>
+  <div class="slide-title">豊中市と沖縄市は<br>🤝 兄弟都市！</div>
+  <div class="compare-row">
+    <div class="compare-card" style="padding:0; overflow:hidden;">
+      <div style="height:clamp(80px,14vh,150px); overflow:hidden;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Aerial_view_of_Toyonaka_City.jpg" alt="豊中市" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div style="padding:12px 16px;">
+        <div class="cc-title">豊中市</div>
+        <div class="cc-body">大阪府<br>みんなの住む街</div>
+      </div>
+    </div>
+    <div class="compare-card" style="padding:0; overflow:hidden;">
+      <div style="height:clamp(80px,14vh,150px); overflow:hidden;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Okinawa_city_Koza_elem-sch.jpg" alt="沖縄市" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div style="padding:12px 16px;">
+        <div class="cc-title">沖縄市</div>
+        <div class="cc-body">沖縄県中部<br>豊中市の兄弟都市</div>
+      </div>
+    </div>
+  </div>
+  <div class="wow-bubble" style="margin-top: 20px; transform: none; font-size: 22px;">だから豊中で沖縄を盛り上げてます！</div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 6: 今日の内容 -->
+<!-- ============================================================ -->
+<div class="slide slide-info" id="slide-6" data-slide="6" style="display:none;">
+  <div class="slide-number-badge">6</div>
+  <div class="slide-title">今日やること！</div>
+  <div class="section-divider"></div>
+  <div style="display: flex; flex-direction: column; gap: 14px; max-width: 700px; width: 100%; text-align: left;">
+    <div class="timeline-item">
+      <div class="timeline-dot">🍜</div>
+      <div class="timeline-content">
+        <div class="tl-title">沖縄の食べ物クイズ</div>
+        <div class="tl-body">みんなで一緒に考えよう！</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">🗣️</div>
+      <div class="timeline-content">
+        <div class="tl-title">沖縄のことば</div>
+        <div class="tl-body">使えたらかっこいい！沖縄語レクチャー</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">🎵</div>
+      <div class="timeline-content">
+        <div class="tl-title">三線ライブ！</div>
+        <div class="tl-body">みんなで手拍子しよう！</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">❓</div>
+      <div class="timeline-content">
+        <div class="tl-title">変わった食べ物も登場…！？</div>
+        <div class="tl-body">これはびっくりするよ…</div>
+      </div>
+    </div>
+  </div>
+  <div class="speech-bubble" style="margin-top: 24px; max-width: 500px;">
+    <p>堅苦しくなく<br>「ユンタク（おしゃべり）」感で楽しもう！</p>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 7: 質問！沖縄料理といえば？ -->
+<!-- ============================================================ -->
+<div class="slide slide-question" id="slide-7" data-slide="7" style="display:none;">
+  <div class="slide-number-badge">7</div>
+  <div class="big-emoji">🤔</div>
+  <div class="slide-title">みんなに質問！</div>
+  <div class="question-box">
+    <div class="question-label">🎤 会場への質問</div>
+    <div class="question-text">「沖縄料理」といえば<br>何を思い浮かべる？</div>
+  </div>
+  <div style="display:flex; gap:10px; margin-top:14px; max-width:600px; width:100%;">
+    <div style="flex:1; height:clamp(70px,11vh,120px); overflow:hidden; border-radius:14px; box-shadow:0 4px 16px rgba(0,0,0,0.3);">
+      <img src="沖縄講演会用/タコライス.JPG" alt="タコライス" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div style="flex:1; height:clamp(70px,11vh,120px); overflow:hidden; border-radius:14px; box-shadow:0 4px 16px rgba(0,0,0,0.3);">
+      <img src="沖縄講演会用/沖縄そば.JPG" alt="沖縄そば" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div style="flex:1; height:clamp(70px,11vh,120px); overflow:hidden; border-radius:14px; box-shadow:0 4px 16px rgba(0,0,0,0.3);">
+      <img src="沖縄講演会用/ゴーヤチャンプル.JPG" alt="ゴーヤチャンプルー" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+  </div>
+  <div class="slide-subtitle" style="margin-top: 12px;">👆 知ってる人は手を挙げて！</div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 8: 沖縄料理いろいろ（一覧） -->
+<!-- ============================================================ -->
+<div class="slide slide-food" id="slide-8" data-slide="8" style="display:none;">
+  <div class="slide-number-badge">8</div>
+  <div class="slide-title">沖縄といえばこれ！</div>
+  <div class="food-grid">
+    <div class="food-item">
+      <div class="food-photo">
+        <img src="沖縄講演会用/タコライス.JPG" alt="タコライス">
+      </div>
+      <div class="food-name">タコライス</div>
+    </div>
+    <div class="food-item">
+      <div class="food-photo">
+        <img src="沖縄講演会用/沖縄そば.JPG" alt="沖縄そば">
+      </div>
+      <div class="food-name">沖縄そば</div>
+    </div>
+    <div class="food-item">
+      <div class="food-photo">
+        <img src="沖縄講演会用/ゴーヤチャンプル.JPG" alt="ゴーヤチャンプルー">
+      </div>
+      <div class="food-name">ゴーヤチャンプルー</div>
+    </div>
+    <div class="food-item">
+      <div class="food-photo">
+        <img src="沖縄講演会用/ラフテー.JPG" alt="ラフテー">
+      </div>
+      <div class="food-name">ラフテー</div>
+    </div>
+    <div class="food-item">
+      <div class="food-photo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Jushi_Rice_at_Yumenoya.jpg" alt="ジューシー">
+      </div>
+      <div class="food-name">ジューシー</div>
+    </div>
+    <div class="food-item">
+      <div class="food-photo">
+        <img src="沖縄講演会用/海ぶどう.jpg" alt="海ぶどう">
+      </div>
+      <div class="food-name">海ぶどう</div>
+    </div>
+    <div class="food-item">
+      <div class="food-photo">
+        <img src="沖縄講演会用/テビチ（豚足）.JPG" alt="テビチ">
+      </div>
+      <div class="food-name">テビチ（豚足）</div>
+    </div>
+    <div class="food-item">
+      <div class="food-photo">
+        <img src="沖縄講演会用/ポーク玉子おにぎり.JPG" alt="ポーク玉子おにぎり">
+      </div>
+      <div class="food-name">ポーク玉子おにぎり</div>
+    </div>
+    <div class="food-item">
+      <div class="food-photo">
+        <img src="沖縄講演会用/ソーメンチャンプル.JPG" alt="ソーメンチャンプルー">
+      </div>
+      <div class="food-name">ソーメンチャンプルー</div>
+    </div>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 9: 料理写真① タコライス -->
+<!-- ============================================================ -->
+<div class="slide slide-food" id="slide-9" data-slide="9" style="display:none;">
+  <div class="slide-number-badge">9</div>
+  <div class="slide-label">沖縄グルメ</div>
+  <div class="slide-title">タコライス 🌮</div>
+  <div class="img-frame tall">
+    <img class="img-real" src="沖縄講演会用/タコライス.JPG" alt="タコライス" loading="lazy">
+  </div>
+  <div class="slide-subtitle" style="margin-top:12px;">メキシコ×アメリカ×沖縄！の混ざりあいメシ</div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 10: 料理写真② 沖縄そば -->
+<!-- ============================================================ -->
+<div class="slide slide-food" id="slide-10" data-slide="10" style="display:none;">
+  <div class="slide-number-badge">10</div>
+  <div class="slide-label">沖縄グルメ</div>
+  <div class="slide-title">沖縄そば 🍜</div>
+  <div class="img-frame tall">
+    <img class="img-real" src="沖縄講演会用/沖縄そば.JPG" alt="沖縄そば" loading="lazy">
+  </div>
+  <div class="slide-subtitle" style="margin-top:12px;">沖縄では「すば」と呼ぶよ！</div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 11: 料理写真③ ゴーヤチャンプルー -->
+<!-- ============================================================ -->
+<div class="slide slide-food" id="slide-11" data-slide="11" style="display:none;">
+  <div class="slide-number-badge">11</div>
+  <div class="slide-label">沖縄グルメ</div>
+  <div class="slide-title">ゴーヤチャンプルー 🥬</div>
+  <div class="img-frame tall">
+    <img class="img-real" src="沖縄講演会用/ゴーヤチャンプル.JPG" alt="ゴーヤチャンプルー" loading="lazy">
+  </div>
+  <div class="slide-subtitle" style="margin-top:12px;">苦い！でも栄養満点！沖縄の定番おかず</div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 12: 料理クイズ問題① -->
+<!-- ============================================================ -->
+<div class="slide slide-quiz-bg" id="slide-12" data-slide="12" style="display:none;">
+  <div class="slide-number-badge">12</div>
+  <div style="color:#FFD60A; font-size:clamp(16px,2.8vh,22px); font-weight:900; letter-spacing:2px;">🍽️ この料理の名前は？</div>
+  <div class="img-frame" style="flex:1; min-height:0; width:100%; max-width:820px; margin:0 auto;">
+    <img class="img-real" src="沖縄講演会用/ラフテー.JPG" alt="ラフテー（ヒント）" loading="lazy" style="height:100%; width:100%; object-fit:cover;">
+  </div>
+  <div style="background:rgba(0,0,0,0.4); color:#fff; font-size:clamp(15px,2.5vh,22px); font-weight:700; padding:clamp(8px,1.4vh,14px) clamp(20px,3vw,36px); border-radius:20px; backdrop-filter:blur(4px);">
+    ヒント：豚バラを長時間煮込んだ料理
+  </div>
+  <div class="clap-tag">💡 わかった人は手を挙げて！</div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 13: 料理クイズ答え① ラフテー -->
+<!-- ============================================================ -->
+<div class="slide slide-answer" id="slide-13" data-slide="13" style="display:none;">
+  <div class="slide-number-badge">13</div>
+  <div class="big-emoji">🎉</div>
+  <div class="slide-title">正解は…</div>
+  <div class="answer-reveal">
+    <div class="answer-label">✅ 正解！</div>
+    <div class="answer-text">ラフテー！</div>
+  </div>
+  <div class="slide-subtitle" style="margin-top: 16px;">豚バラを醤油・泡盛・砂糖で<br>ゆーっくり煮込んだ沖縄の代表料理！</div>
+  <div class="img-frame med" style="margin-top: 12px;">
+    <img class="img-real" src="沖縄講演会用/ラフテー.JPG" alt="ラフテー" loading="lazy">
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 14: 料理クイズ問題② -->
+<!-- ============================================================ -->
+<div class="slide slide-quiz-bg" id="slide-14" data-slide="14" style="display:none;">
+  <div class="slide-number-badge">14</div>
+  <div class="big-emoji tada">❓</div>
+  <div class="slide-title">料理クイズ 第2問！</div>
+  <div class="question-box">
+    <div class="question-label">🍽️ この料理の名前は？</div>
+    <div class="img-frame quiz" style="margin: 16px auto;">
+      <img class="img-real"
+           src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Jushi_Rice_at_Yumenoya.jpg"
+           alt="ジューシー（ヒント）" loading="lazy">
+    </div>
+    <div class="question-text">ヒント：沖縄の炊き込みご飯！</div>
+  </div>
+  <div class="clap-row">
+    <div class="clap-tag">💡 わかった人は手を挙げて！</div>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 15: 料理クイズ答え② ジューシー -->
+<!-- ============================================================ -->
+<div class="slide slide-answer" id="slide-15" data-slide="15" style="display:none;">
+  <div class="slide-number-badge">15</div>
+  <div class="big-emoji">🎊</div>
+  <div class="slide-title">正解は…</div>
+  <div class="answer-reveal">
+    <div class="answer-label">✅ 正解！</div>
+    <div class="answer-text">ジューシー！</div>
+  </div>
+  <div class="slide-subtitle" style="margin-top: 20px;">豚肉・昆布・にんじん入りの<br>沖縄風炊き込みご飯🍚<br>お祝いのときに食べる特別なご飯！</div>
+  <div class="img-frame med" style="margin-top: 12px;">
+    <img class="img-real" src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Jushi_Rice_at_Yumenoya.jpg" alt="ジューシー" loading="lazy">
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 16: 琉球料理 vs 沖縄料理 -->
+<!-- ============================================================ -->
+<div class="slide slide-info" id="slide-16" data-slide="16" style="display:none;">
+  <div class="slide-number-badge">16</div>
+  <div class="slide-label">ちょっと深掘り！</div>
+  <div class="slide-title">「琉球料理」と「沖縄料理」<br>どう違う？</div>
+  <div class="compare-row">
+    <div class="compare-card" style="padding:0; overflow:hidden;">
+      <div style="height:clamp(80px,13vh,140px); overflow:hidden;">
+        <img src="沖縄講演会用/ラフテー.JPG" alt="琉球料理" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div style="padding:12px 16px;">
+        <div class="cc-title" style="font-size:clamp(20px,3.5vh,36px); margin-bottom:6px;">琉球料理</div>
+        <div class="cc-body">昔ながらの伝統料理<br>沖縄独自の材料・調理法</div>
+      </div>
+    </div>
+    <div class="compare-card" style="padding:0; overflow:hidden;">
+      <div style="height:clamp(80px,13vh,140px); overflow:hidden;">
+        <img src="沖縄講演会用/ポーク玉子おにぎり.JPG" alt="沖縄料理" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div style="padding:12px 16px;">
+        <div class="cc-title" style="font-size:clamp(20px,3.5vh,36px); margin-bottom:6px;">沖縄料理</div>
+        <div class="cc-body">戦後アメリカの影響を受けた<br>タコライスやポーク玉子など</div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 17: チャンプルークイズ問題 -->
+<!-- ============================================================ -->
+<div class="slide slide-quiz-bg" id="slide-17" data-slide="17" style="display:none;">
+  <div class="slide-number-badge">17</div>
+  <div class="big-emoji tada">❓</div>
+  <div class="slide-title">クイズ！</div>
+  <div class="question-box">
+    <div class="question-label">🍳 「ゴーヤチャンプルー」</div>
+    <div class="question-text" style="margin-top: 12px;">ポーク缶が入ってたら<br>琉球料理？沖縄料理？</div>
+  </div>
+  <div class="img-frame sm" style="margin-top:10px; max-width:560px;">
+    <img class="img-real" src="沖縄講演会用/ゴーヤチャンプル.JPG" alt="ゴーヤチャンプルー" loading="lazy">
+  </div>
+  <div class="compare-row" style="margin-top: 12px; max-width: 600px;">
+    <div class="compare-card" style="cursor:pointer;">
+      <div class="cc-icon">👘</div>
+      <div class="cc-title" style="color:#fff;">A. 琉球料理</div>
+    </div>
+    <div class="compare-card" style="cursor:pointer;">
+      <div class="cc-icon">🇺🇸</div>
+      <div class="cc-title" style="color:#fff;">B. 沖縄料理</div>
+    </div>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 18: チャンプルークイズ答え -->
+<!-- ============================================================ -->
+<div class="slide slide-answer" id="slide-18" data-slide="18" style="display:none;">
+  <div class="slide-number-badge">18</div>
+  <div class="big-emoji">🎉</div>
+  <div class="slide-title">正解は…</div>
+  <div class="answer-reveal">
+    <div class="answer-label">✅ 正解！</div>
+    <div class="answer-text">B. 沖縄料理！</div>
+  </div>
+  <div class="compare-row" style="margin-top: 16px; max-width: 700px;">
+    <div class="compare-card" style="padding:0; overflow:hidden;">
+      <div style="height:clamp(70px,12vh,130px); overflow:hidden;">
+        <img src="沖縄講演会用/ゴーヤチャンプル.JPG" alt="豚バラ入り" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div style="padding:10px 14px;">
+        <div class="cc-title">豚バラ入り</div>
+        <div class="cc-body">👘 琉球料理</div>
+      </div>
+    </div>
+    <div class="compare-card" style="padding:0; overflow:hidden;">
+      <div style="height:clamp(70px,12vh,130px); overflow:hidden;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Grocery_Spam.jpg" alt="ポーク缶" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+      <div style="padding:10px 14px;">
+        <div class="cc-title">ポーク缶入り</div>
+        <div class="cc-body">🇺🇸 沖縄料理</div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 19: チャンプルー文化 -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-19" data-slide="19" style="display:none; background: linear-gradient(135deg,#06D6A0,#0077B6);">
+  <div class="slide-number-badge">19</div>
+  <div class="slide-label">チャンプルー文化</div>
+  <div class="slide-title">チャンプルー＝<br>「ごちゃまぜ」！</div>
+  <div class="section-divider"></div>
+  <div class="cards-row">
+    <div class="info-card" style="text-align:center; padding:0; overflow:hidden;">
+      <div style="height:clamp(70px,12vh,130px); overflow:hidden;">
+        <img src="沖縄講演会用/ゴーヤチャンプル.JPG" alt="ゴーヤチャンプルー" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+      <div class="ic-body" style="padding:8px;">ゴーヤチャンプルー</div>
+    </div>
+    <div class="info-card" style="text-align:center; padding:0; overflow:hidden;">
+      <div style="height:clamp(70px,12vh,130px); overflow:hidden;">
+        <img src="沖縄講演会用/ソーメンチャンプル.JPG" alt="ソーメンチャンプルー" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+      <div class="ic-body" style="padding:8px;">ソーメンチャンプルー</div>
+    </div>
+    <div class="info-card" style="text-align:center; padding:0; overflow:hidden;">
+      <div style="height:clamp(70px,12vh,130px); overflow:hidden;">
+        <img src="沖縄講演会用/パパイヤ入りチー.JPG" alt="パパイヤチャンプルー" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+      <div class="ic-body" style="padding:8px;">パパイヤチャンプルー</div>
+    </div>
+  </div>
+  <div class="speech-bubble" style="margin-top: 24px;">
+    <p>沖縄は色々な国の文化がまざりあった場所🌏<br>それがチャンプルー文化！</p>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 20: 沖縄そばクイズ 問題 -->
+<!-- ============================================================ -->
+<div class="slide slide-quiz-bg" id="slide-20" data-slide="20" style="display:none;">
+  <div class="slide-number-badge">20</div>
+  <div class="big-emoji tada">❓</div>
+  <div class="slide-title">沖縄そばクイズ！</div>
+  <div class="img-frame sm" style="max-width:500px;">
+    <img class="img-real" src="沖縄講演会用/沖縄そば.JPG" alt="沖縄そば" loading="lazy">
+  </div>
+  <div class="question-box">
+    <div class="question-label">🍜 沖縄そばってなぜ「そば」と呼べなかった？</div>
+    <div class="question-text" style="margin-top: 12px;">なぜ昔は「そば」と呼ぶのを<br>禁止されたのか？</div>
+  </div>
+  <div class="clap-row">
+    <div class="clap-tag flash">👉 次のスライドで正解発表！</div>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 21: 沖縄そばクイズ 答え -->
+<!-- ============================================================ -->
+<div class="slide slide-answer" id="slide-21" data-slide="21" style="display:none;">
+  <div class="slide-number-badge">21</div>
+  <div class="big-emoji">😲</div>
+  <div class="slide-title">正解は…</div>
+  <div class="answer-reveal">
+    <div class="answer-label">✅ 正解！</div>
+    <div class="answer-text" style="font-size: clamp(22px,3vw,40px);">蕎麦粉を使ってないから！</div>
+  </div>
+  <div class="img-frame sm" style="margin-top:10px; max-width:500px;">
+    <img class="img-real" src="沖縄講演会用/沖縄そば.JPG" alt="沖縄そば" loading="lazy">
+  </div>
+  <div class="cards-row" style="margin-top: 12px;">
+    <div class="info-card">
+      <div class="ic-title">⏳ 昔</div>
+      <div class="ic-body">「蕎麦粉なしでそばは名乗れない！」とクレームに…</div>
+    </div>
+    <div class="info-card">
+      <div class="ic-title">✅ 1978年</div>
+      <div class="ic-body">特例として<b style="color:#FFD60A;">「沖縄そば」</b>と堂々と名乗れるように！</div>
+    </div>
+  </div>
+  <div class="wow-bubble" style="margin-top: 16px; font-size: 20px; transform: none;">まだ許可されてから50年も経ってない！</div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 22: 沖縄そば写真 -->
+<!-- ============================================================ -->
+<div class="slide slide-food" id="slide-22" data-slide="22" style="display:none;">
+  <div class="slide-number-badge">22</div>
+  <div class="slide-label">見てみよう！</div>
+  <div class="slide-title">沖縄そばの見た目</div>
+  <div class="img-frame tall">
+    <img class="img-real" src="沖縄講演会用/沖縄そば.JPG" alt="沖縄そば" loading="lazy">
+  </div>
+  <div class="speech-bubble" style="margin-top: 16px;">
+    <p>「見た目は完全にうどん！でも名前はそば😂」</p>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 23: 沖縄そば vs ソーキそば クイズ -->
+<!-- ============================================================ -->
+<div class="slide slide-quiz-bg" id="slide-23" data-slide="23" style="display:none;">
+  <div class="slide-number-badge">23</div>
+  <div class="big-emoji tada">❓</div>
+  <div class="slide-title">もう1問！</div>
+  <div class="question-box">
+    <div class="question-label">🍜 沖縄そば vs ソーキそば</div>
+    <div class="question-text" style="margin-top: 12px;">この2つって何が違うの？</div>
+  </div>
+  <div class="clap-row">
+    <div class="clap-tag">💡 わかった人いる？</div>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 24: 沖縄そば vs ソーキそば 答え -->
+<!-- ============================================================ -->
+<div class="slide slide-answer" id="slide-24" data-slide="24" style="display:none;">
+  <div class="slide-number-badge">24</div>
+  <div class="slide-title">答えは「肉の種類」！</div>
+  <div class="compare-row" style="max-width: 760px;">
+    <div class="compare-card">
+      <div class="cc-icon">🥩</div>
+      <div class="cc-title">沖縄そば</div>
+      <div class="cc-body" style="font-size: 20px; font-weight: 900;">三枚肉<br><span style="font-size:15px; font-weight:400; opacity:0.8;">バラ肉のことだよ</span></div>
+    </div>
+    <div class="compare-card">
+      <div class="cc-icon">🍖</div>
+      <div class="cc-title">ソーキそば</div>
+      <div class="cc-body" style="font-size: 20px; font-weight: 900;">スペアリブ<br><span style="font-size:15px; font-weight:400; opacity:0.8;">骨付き豚肉！</span></div>
+    </div>
+  </div>
+  <div class="img-frame med" style="margin-top: 16px;">
+    <img class="img-real" src="沖縄講演会用/沖縄そば.JPG" alt="沖縄そば・ソーキそば" loading="lazy">
+  </div>
+  <div class="wow-bubble" style="margin-top: 12px; font-size: 20px; transform: none;">麺もスープも同じ！のせる肉が違うだけ！</div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 25: 変わった食べ物イントロ -->
+<!-- ============================================================ -->
+<div class="slide slide-wow" id="slide-25" data-slide="25" style="display:none;">
+  <div class="slide-number-badge">25</div>
+  <div class="big-emoji">😱</div>
+  <div class="slide-title">沖縄の<br>変わった食べ物！</div>
+  <div style="display:flex; gap:10px; max-width:560px; width:100%;">
+    <div style="flex:1; height:clamp(70px,11vh,120px); overflow:hidden; border-radius:14px; box-shadow:0 4px 16px rgba(0,0,0,0.3); filter:blur(4px);">
+      <img src="沖縄講演会用/ヒートぅー（イルカ）.JPG" alt="?" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div style="flex:1; height:clamp(70px,11vh,120px); overflow:hidden; border-radius:14px; box-shadow:0 4px 16px rgba(0,0,0,0.3); filter:blur(4px);">
+      <img src="沖縄講演会用/イラブー.JPG" alt="?" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+    <div style="flex:1; height:clamp(70px,11vh,120px); overflow:hidden; border-radius:14px; box-shadow:0 4px 16px rgba(0,0,0,0.3); filter:blur(4px);">
+      <img src="沖縄講演会用/ヤギ汁.JPG" alt="?" style="width:100%;height:100%;object-fit:cover;">
+    </div>
+  </div>
+  <div class="speech-bubble">
+    <p>次から紹介するもの…<br>みんな食べたことある？🤔<br>けっこう衝撃かも…！</p>
+  </div>
+  <div class="wow-bubble" style="margin-top: 12px;">心の準備はいい？！</div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 26: ひーとぅー クイズ -->
+<!-- ============================================================ -->
+<div class="slide slide-quiz-bg" id="slide-26" data-slide="26" style="display:none;">
+  <div class="slide-number-badge">26</div>
+  <div class="big-emoji tada">❓</div>
+  <div class="slide-title">問題！</div>
+  <div class="question-box">
+    <div class="question-label">🤔 沖縄語で「ひーとぅー」とは何？</div>
+    <div class="question-text" style="margin-top: 12px;">沖縄ではこれを食べる文化がある！</div>
+  </div>
+  <div class="img-frame sm" style="margin-top: 20px;">
+    <img class="img-real" src="沖縄講演会用/ヒートぅー（イルカ）.JPG" alt="イルカ（ヒント）" loading="lazy">
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 27: ひーとぅー 答え -->
+<!-- ============================================================ -->
+<div class="slide slide-answer" id="slide-27" data-slide="27" style="display:none;">
+  <div class="slide-number-badge">27</div>
+  <div class="big-emoji">😲</div>
+  <div class="slide-title">正解は…</div>
+  <div class="answer-reveal">
+    <div class="answer-label">✅ 正解！</div>
+    <div class="answer-text">イルカ！🐬</div>
+  </div>
+  <div class="slide-subtitle" style="margin-top: 16px;">名護市の「曲（まがい）」地区では<br>昔から食べられてきた文化があります</div>
+  <div class="img-frame med" style="margin-top: 12px;">
+    <img class="img-real" src="沖縄講演会用/ヒートぅー（イルカ）.JPG" alt="ひーとぅー（イルカ）" loading="lazy">
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 28: イラブー -->
+<!-- ============================================================ -->
+<div class="slide slide-wow" id="slide-28" data-slide="28" style="display:none;">
+  <div class="slide-number-badge">28</div>
+  <div class="big-emoji">🐍</div>
+  <div class="slide-title">え！？これも食べるの！？</div>
+  <div class="answer-reveal">
+    <div class="answer-label">沖縄の珍食</div>
+    <div class="answer-text" style="font-size: clamp(28px,5vw,60px);">イラブー（ウミヘビ）</div>
+  </div>
+  <div class="img-frame med" style="margin-top: 16px;">
+    <img class="img-real" src="沖縄講演会用/イラブー.JPG" alt="イラブー" loading="lazy">
+  </div>
+  <div class="speech-bubble" style="margin-top: 12px;">
+    <p>煮付けや汁物に！昔から<br>滋養強壮の食べ物として珍重されてます💪</p>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 29: ヒージャー（ヤギ汁）クイズ -->
+<!-- ============================================================ -->
+<div class="slide slide-quiz-bg" id="slide-29" data-slide="29" style="display:none;">
+  <div class="slide-number-badge">29</div>
+  <div class="big-emoji tada">❓</div>
+  <div class="slide-title">問題！</div>
+  <div class="question-box">
+    <div class="question-label">🤔 沖縄語で「ヒージャー」とは何？</div>
+    <div class="question-text" style="margin-top: 12px;">これを汁にした料理が沖縄にあります！</div>
+  </div>
+  <div class="img-frame sm" style="margin-top: 16px;">
+    <img class="img-real" src="沖縄講演会用/ヤギ汁.JPG" alt="ヤギ汁（ヒント）" loading="lazy">
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 30: ヒージャー 答え -->
+<!-- ============================================================ -->
+<div class="slide slide-answer" id="slide-30" data-slide="30" style="display:none;">
+  <div class="slide-number-badge">30</div>
+  <div class="big-emoji">😮</div>
+  <div class="slide-title">正解は…</div>
+  <div class="answer-reveal">
+    <div class="answer-label">✅ 正解！</div>
+    <div class="answer-text">ヤギ！🐐</div>
+  </div>
+  <div class="slide-subtitle" style="margin-top: 16px;">「ヒージャー汁」はヤギ肉の汁物！<br>沖縄の南城市にあるまんぷく食堂が有名！</div>
+  <div style="display:flex; gap:14px; width:100%; max-width:700px; margin-top:14px;">
+    <div style="flex:1; text-align:center;">
+      <img class="img-real" src="沖縄講演会用/ヤギ汁.JPG" alt="ヤギ汁" style="height:180px; width:100%; object-fit:cover; border-radius:16px;">
+      <div style="color:#FFD60A; font-weight:900; margin-top:6px; font-size:16px;">ヒージャー汁（ヤギ）</div>
+    </div>
+    <div style="flex:1; text-align:center;">
+      <img class="img-real" src="沖縄講演会用/アヒル汁.JPG" alt="アヒル汁" style="height:180px; width:100%; object-fit:cover; border-radius:16px;">
+      <div style="color:#FFD60A; font-weight:900; margin-top:6px; font-size:16px;">アヒル汁🦆</div>
+    </div>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 31: ぬちぐすい（命の薬） -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-31" data-slide="31" style="display:none; background: linear-gradient(160deg,#023E8A,#0077B6,#06D6A0);">
+  <div class="slide-number-badge">31</div>
+  <div style="width:100%;max-width:1100px;display:flex;align-items:center;gap:clamp(20px,4vw,60px);">
+    <!-- 左：テキスト -->
+    <div style="flex:1;display:flex;flex-direction:column;gap:clamp(8px,1.5vh,18px);">
+      <div class="big-emoji" style="font-size:clamp(40px,6vh,64px);text-align:left;">💊</div>
+      <div class="slide-title" style="font-size:clamp(36px,6vw,80px);text-align:left;">ぬちぐすい</div>
+      <div class="answer-reveal" style="display:inline-block;">
+        <div class="answer-label">沖縄語で…</div>
+        <div class="answer-text" style="font-size:clamp(24px,4vw,52px);">「命の薬」</div>
+      </div>
+      <div class="speech-bubble" style="max-width:500px;">
+        <p>「食べ物はすべて命の薬だ！」<br>沖縄の医食同源の考え方✨<br>食べることで体も心も元気になる！</p>
+      </div>
+    </div>
+    <!-- 右：画像2枚 -->
+    <div style="flex:1;display:flex;flex-direction:column;gap:clamp(8px,1.5vh,16px);">
+      <div class="img-frame med" style="max-width:100%;height:clamp(130px,22vh,240px);">
+        <img class="img-real" src="沖縄講演会用/ゴーヤチャンプル.JPG" alt="ゴーヤチャンプル" loading="lazy">
+      </div>
+      <div class="img-frame med" style="max-width:100%;height:clamp(130px,22vh,240px);">
+        <img class="img-real" src="沖縄講演会用/パパイヤ入りチー.JPG" alt="パパイヤチャンプル" loading="lazy">
+      </div>
+    </div>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 32: 方言コーナー イントロ -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-32" data-slide="32" style="display:none; background: linear-gradient(135deg,#FF006E,#FFD60A);">
+  <div class="slide-number-badge">32</div>
+  <div class="big-emoji">🗣️</div>
+  <div class="slide-title">沖縄ことばを<br>おぼえよう！</div>
+  <div class="img-frame sm" style="max-width:560px;">
+    <img class="img-real" src="https://upload.wikimedia.org/wikipedia/commons/5/52/Seragaki_eisa.jpg" alt="エイサー" loading="lazy">
+  </div>
+  <div class="speech-bubble">
+    <p>これを使えたら旅行でも<br>絶対ウケる！😆<br>一緒に練習しよう！</p>
+  </div>
+  <div class="clap-row">
+    <div class="clap-tag">声に出して言ってみよう！</div>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 33: 方言クイズ① めんそーれ -->
+<!-- ============================================================ -->
+<div class="slide slide-quiz-bg" id="slide-33" data-slide="33" style="display:none;">
+  <div class="slide-number-badge">33</div>
+  <div style="position:relative;z-index:1;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(12px,2.5vh,28px);">
+    <div style="font-size:clamp(18px,3vh,28px);font-weight:900;color:#FFD60A;letter-spacing:0.3em;text-transform:uppercase;">方言クイズ 第1問</div>
+    <div style="font-size:clamp(60px,11vw,140px);font-weight:900;color:#fff;text-shadow:0 4px 30px rgba(0,0,0,0.5);text-align:center;line-height:1.1;">「めんそーれ」</div>
+    <div style="font-size:clamp(28px,5vw,64px);font-weight:700;color:rgba(255,255,255,0.9);text-align:center;">ってどういう意味？</div>
+    <div style="margin-top:clamp(8px,2vh,20px);">
+      <div style="background:rgba(255,255,255,0.2);border:3px solid rgba(255,255,255,0.5);color:#fff;padding:clamp(8px,1.5vh,14px) clamp(20px,3vw,40px);border-radius:40px;font-size:clamp(18px,2.5vw,30px);font-weight:900;" class="flash">💡 知ってる人は手を挙げて！</div>
+    </div>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 34: 方言① めんそーれ 答え -->
+<!-- ============================================================ -->
+<div class="slide slide-answer" id="slide-34" data-slide="34" style="display:none;">
+  <div class="slide-number-badge">34</div>
+  <div style="width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(10px,2vh,24px);">
+    <div style="font-size:clamp(22px,4vh,36px);font-weight:700;color:rgba(255,255,255,0.8);letter-spacing:0.1em;">答え</div>
+    <div style="font-size:clamp(50px,9vw,120px);font-weight:900;color:#FFD60A;text-shadow:0 4px 20px rgba(0,0,0,0.4);text-align:center;line-height:1;">めんそーれ</div>
+    <div style="width:80px;height:5px;background:rgba(255,255,255,0.5);border-radius:3px;"></div>
+    <div style="font-size:clamp(40px,8vw,100px);font-weight:900;color:#fff;text-shadow:0 4px 20px rgba(0,0,0,0.3);text-align:center;line-height:1.1;">ようこそ！<br>いらっしゃい！</div>
+    <div style="background:rgba(255,255,255,0.15);border:2px solid rgba(255,255,255,0.4);border-radius:20px;padding:clamp(10px,1.5vh,18px) clamp(24px,3vw,48px);text-align:center;">
+      <div style="font-size:clamp(16px,2.5vw,28px);color:rgba(255,255,255,0.85);font-weight:700;">表紙にも書いてたよ！みんな気づいてた？</div>
+    </div>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 35: 方言クイズ① はいさい（クイズ） -->
+<!-- ============================================================ -->
+<div class="slide slide-quiz-bg" id="slide-35" data-slide="35" style="display:none;">
+  <div class="slide-number-badge">35</div>
+  <div style="width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(12px,2.5vh,28px);">
+    <div style="font-size:clamp(18px,3vh,28px);font-weight:900;color:#FFD60A;letter-spacing:0.3em;text-transform:uppercase;">方言クイズ 第1.5問</div>
+    <div style="font-size:clamp(60px,11vw,140px);font-weight:900;color:#fff;text-shadow:0 4px 30px rgba(0,0,0,0.5);text-align:center;line-height:1.1;">「はいさい！」</div>
+    <div style="font-size:clamp(28px,5vw,64px);font-weight:700;color:rgba(255,255,255,0.9);text-align:center;">ってどういう意味？</div>
+    <div style="margin-top:clamp(8px,2vh,20px);">
+      <div style="background:rgba(255,255,255,0.2);border:3px solid rgba(255,255,255,0.5);color:#fff;padding:clamp(8px,1.5vh,14px) clamp(20px,3vw,40px);border-radius:40px;font-size:clamp(18px,2.5vw,30px);font-weight:900;" class="flash">💡 さっき聞いたよ！覚えてる？</div>
+    </div>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 49: 方言① はいさい（答え） -->
+<!-- ============================================================ -->
+<div class="slide slide-answer" id="slide-49" data-slide="49" style="display:none;">
+  <div class="slide-number-badge">49</div>
+  <div style="width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(10px,2vh,22px);">
+    <div style="font-size:clamp(22px,4vh,36px);font-weight:700;color:rgba(255,255,255,0.8);">答え</div>
+    <div style="font-size:clamp(52px,9.5vw,130px);font-weight:900;color:#FFD60A;text-shadow:0 4px 20px rgba(0,0,0,0.4);text-align:center;line-height:1;">はいさい！</div>
+    <div style="width:80px;height:5px;background:rgba(255,255,255,0.5);border-radius:3px;"></div>
+    <div style="font-size:clamp(50px,9vw,120px);font-weight:900;color:#fff;text-shadow:0 4px 20px rgba(0,0,0,0.3);text-align:center;line-height:1.1;">こんにちは！</div>
+    <div style="background:rgba(255,255,255,0.15);border:2px solid rgba(255,255,255,0.4);border-radius:20px;padding:clamp(10px,1.5vh,18px) clamp(24px,3vw,50px);text-align:center;margin-top:clamp(4px,1vh,10px);">
+      <div style="font-size:clamp(18px,2.8vw,32px);color:rgba(255,255,255,0.9);font-weight:700;line-height:1.7;">男性：<span style="color:#FFD60A;">はいさい！</span>　女性：<span style="color:#FFD60A;">はいたい！</span><br>みんなで言ってみよう！</div>
+    </div>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 36: 方言クイズ② にふぇーでーびる -->
+<!-- ============================================================ -->
+<div class="slide slide-quiz-bg" id="slide-36" data-slide="36" style="display:none;">
+  <div class="slide-number-badge">36</div>
+  <div style="width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(12px,2.5vh,28px);">
+    <div style="font-size:clamp(18px,3vh,28px);font-weight:900;color:#FFD60A;letter-spacing:0.3em;">方言クイズ 第2問</div>
+    <div style="font-size:clamp(48px,9vw,120px);font-weight:900;color:#fff;text-shadow:0 4px 30px rgba(0,0,0,0.5);text-align:center;line-height:1.1;">「にふぇーでーびる」</div>
+    <div style="font-size:clamp(28px,5vw,64px);font-weight:700;color:rgba(255,255,255,0.9);text-align:center;">ってどういう意味？</div>
+    <div style="margin-top:clamp(6px,1.5vh,16px);">
+      <div style="background:rgba(255,255,255,0.2);border:3px solid rgba(255,255,255,0.5);color:#fff;padding:clamp(8px,1.5vh,14px) clamp(20px,3vw,40px);border-radius:40px;font-size:clamp(18px,2.5vw,30px);font-weight:900;" class="flash">💡 知ってる人は手を挙げて！</div>
+    </div>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 37: 方言② にふぇーでーびる 答え -->
+<!-- ============================================================ -->
+<div class="slide slide-answer" id="slide-37" data-slide="37" style="display:none;">
+  <div class="slide-number-badge">37</div>
+  <div style="width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(10px,2vh,22px);">
+    <div style="font-size:clamp(22px,4vh,36px);font-weight:700;color:rgba(255,255,255,0.8);">答え</div>
+    <div style="font-size:clamp(42px,7.5vw,100px);font-weight:900;color:#FFD60A;text-shadow:0 4px 20px rgba(0,0,0,0.4);text-align:center;line-height:1;">にふぇーでーびる</div>
+    <div style="width:80px;height:5px;background:rgba(255,255,255,0.5);border-radius:3px;"></div>
+    <div style="font-size:clamp(50px,9vw,120px);font-weight:900;color:#fff;text-shadow:0 4px 20px rgba(0,0,0,0.3);text-align:center;line-height:1.1;">ありがとう！</div>
+    <div style="display:flex;gap:clamp(10px,2vw,24px);flex-wrap:wrap;justify-content:center;margin-top:clamp(4px,1vh,12px);">
+      <div style="background:rgba(255,255,255,0.15);border:2px solid rgba(255,255,255,0.4);border-radius:20px;padding:clamp(10px,1.5vh,18px) clamp(20px,2.5vw,40px);text-align:center;">
+        <div style="font-size:clamp(18px,3vw,36px);color:#FFD60A;font-weight:900;">にふぇーでーびる</div>
+        <div style="font-size:clamp(14px,2vw,22px);color:#fff;font-weight:700;margin-top:4px;">ありがとうございました</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.15);border:2px solid rgba(255,255,255,0.4);border-radius:20px;padding:clamp(10px,1.5vh,18px) clamp(20px,2.5vw,40px);text-align:center;">
+        <div style="font-size:clamp(16px,2.5vw,30px);color:#FFD60A;font-weight:900;">ゆたしくうにげーさびら</div>
+        <div style="font-size:clamp(14px,2vw,22px);color:#fff;font-weight:700;margin-top:4px;">よろしくお願いします</div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 38: 音楽コーナー イントロ -->
+<!-- ============================================================ -->
+<div class="slide slide-music" id="slide-38" data-slide="38" style="display:none;">
+  <div class="slide-number-badge">38</div>
+  <div style="display:flex; align-items:center; gap:24px; width:100%; max-width:700px; margin-bottom:8px;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c6/Sanshin.jpg" alt="三線" style="width:clamp(80px,12vw,130px); height:clamp(80px,12vw,130px); object-fit:cover; border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.4); flex-shrink:0;">
+    <div>
+      <div class="slide-title" style="text-align:left; margin-bottom:4px;">音楽コーナー！</div>
+      <div class="slide-subtitle" style="text-align:left;">三線ライブスタート🎶</div>
+    </div>
+  </div>
+  <div style="display: flex; flex-direction: column; gap: 12px; align-items: center; width: 100%; max-width: 700px;">
+    <div class="music-card">
+      <div class="mc-icon">🎵</div>
+      <div>
+        <div class="mc-title">安里屋ユンタ</div>
+        <div class="mc-sub">沖縄の伝統民謡！みんなで「サァ ユイユイ」！</div>
+      </div>
+    </div>
+    <div class="music-card">
+      <div class="mc-icon">🌊</div>
+      <div>
+        <div class="mc-title">涙そうそう</div>
+        <div class="mc-sub">BEGIN の名曲！心に染みる沖縄の歌</div>
+      </div>
+    </div>
+    <div class="music-card">
+      <div class="mc-icon">🌺</div>
+      <div>
+        <div class="mc-title">島人ぬ宝</div>
+        <div class="mc-sub">BEGIN の名曲！沖縄の心を歌う</div>
+      </div>
+    </div>
+    <div class="music-card">
+      <div class="mc-icon">🍺</div>
+      <div>
+        <div class="mc-title">オジー自慢のオリオンビール</div>
+        <div class="mc-sub">楽しくなる曲！盛り上がろう！</div>
+      </div>
+    </div>
+    <div class="music-card">
+      <div class="mc-icon">🎶</div>
+      <div>
+        <div class="mc-title">沖縄メドレー</div>
+        <div class="mc-sub">沖縄の名曲をまとめて！みんなで盛り上がろう！</div>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 39: 手拍子しよう！ -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-39" data-slide="39" style="display:none; background: linear-gradient(135deg,#FF006E,#FFD60A,#FF6B6B);">
+  <div class="slide-number-badge">39</div>
+  <div class="big-emoji" style="font-size: 100px;">👏</div>
+  <div class="slide-title">みんなで手拍子！</div>
+  <div class="clap-row">
+    <div class="wow-bubble">👏 パン！</div>
+    <div class="wow-bubble r2">パン！ 👏</div>
+    <div class="wow-bubble">👏 パン！</div>
+  </div>
+  <div class="img-frame sm" style="margin-top:16px; max-width:560px;">
+    <img class="img-real" src="https://upload.wikimedia.org/wikipedia/commons/5/52/Seragaki_eisa.jpg" alt="エイサー" loading="lazy">
+  </div>
+  <div class="speech-bubble" style="margin-top: 12px; max-width: 600px;">
+    <p>一緒に沖縄の音楽を楽しもう！🎵<br>声も出していいよ〜！</p>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 40: おわり！ -->
+<!-- ============================================================ -->
+<div class="slide slide-end" id="slide-40" data-slide="40" style="display:none;">
+  <div class="slide-number-badge">40</div>
+  <div class="hibiscus-deco hib-1">🌺</div>
+  <div class="hibiscus-deco hib-2">🌊</div>
+  <div class="img-frame sm" style="max-width: 640px; height: 240px; margin-bottom: 20px;">
+    <img class="img-real" src="沖縄講演会用/IMG_2082.JPG" alt="沖縄の風景" loading="lazy">
+  </div>
+  <div class="slide-title" style="font-size: clamp(40px, 7vw, 90px);">にふぇーでーびる！</div>
+  <div class="slide-subtitle">ありがとうございました！</div>
+  <div class="speech-bubble" style="margin-top: 12px;">
+    <p>今日はありがとうございました！<br>修学旅行、めっちゃ楽しんできてね！🌺<br>現地でぜひ沖縄語を使ってみよう！</p>
+  </div>
+  <div class="clap-row" style="margin-top: 16px;">
+    <div class="clap-tag">🌺 修学旅行楽しんでね！ いってらっしゃい！</div>
+  </div>
+  <div class="wave-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 41: はいさいぐーすーよーちゅーがなびら -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-41" data-slide="41" style="display:none; background: linear-gradient(135deg,#FF006E,#FF6B6B,#FFD60A);">
+  <div class="slide-number-badge">41</div>
+  <div class="bottom-deco"></div>
+  <div class="greeting-big" style="font-size:clamp(22px,4.5vh,52px); line-height:1.2;">はいさいぐーすーよー<br>ちゅーがなびら！</div>
+  <div class="greeting-ruby">沖縄語で「みなさん、こんにちは！」</div>
+  <div class="speech-bubble">
+    <p>これが沖縄の正式なあいさつです！<br>一緒に言えるかな？🌺<br>「はいさいぐーすーよーちゅーがなびら！」</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 42: 沖縄食文化の発展背景 -->
+<!-- ============================================================ -->
+<div class="slide slide-info" id="slide-42" data-slide="42" style="display:none;">
+  <div class="slide-number-badge">42</div>
+  <div class="slide-label">なぜ沖縄料理は独特なの？</div>
+  <div class="slide-title">沖縄の食文化の<br>発展背景</div>
+  <div class="section-divider"></div>
+  <div class="cards-row">
+    <div class="info-card" style="text-align:center;">
+      <div style="font-size:36px; margin-bottom:8px;">🌞</div>
+      <div class="ic-title">亜熱帯の気候</div>
+      <div class="ic-body">暑くて湿度が高い<br>独自の食材・薬草が育つ</div>
+    </div>
+    <div class="info-card" style="text-align:center;">
+      <div style="font-size:36px; margin-bottom:8px;">🇨🇳</div>
+      <div class="ic-title">中国の影響</div>
+      <div class="ic-body">琉球王国時代に交流<br>豚肉文化・昆布・豆腐など</div>
+    </div>
+    <div class="info-card" style="text-align:center;">
+      <div style="font-size:36px; margin-bottom:8px;">🇺🇸</div>
+      <div class="ic-title">アメリカの影響</div>
+      <div class="ic-body">戦後の米軍統治<br>ポーク缶・タコライスなど</div>
+    </div>
+  </div>
+  <div class="speech-bubble" style="margin-top: 16px;">
+    <p>色々な文化が混ざり合った「チャンプルー文化」<br>が沖縄の食の原点！🌏</p>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 43: 地方による沖縄そばの違い -->
+<!-- ============================================================ -->
+<div class="slide slide-food" id="slide-43" data-slide="43" style="display:none;">
+  <div class="slide-number-badge">43</div>
+  <div class="slide-label">知ってた？</div>
+  <div class="slide-title">地方によって違う沖縄そば</div>
+  <div class="section-divider"></div>
+  <div class="cards-row">
+    <div class="info-card" style="text-align:center;">
+      <div style="font-size:36px; margin-bottom:8px;">🍜</div>
+      <div class="ic-title">名護そば</div>
+      <div class="ic-body">ガンちゃんの故郷・名護市<br>細めの麺・あっさりした汁</div>
+    </div>
+    <div class="info-card" style="text-align:center;">
+      <div style="font-size:36px; margin-bottom:8px;">🏯</div>
+      <div class="ic-title">首里そば</div>
+      <div class="ic-body">那覇市首里地区<br>細麺・シンプルな味わい</div>
+    </div>
+    <div class="info-card" style="text-align:center;">
+      <div style="font-size:36px; margin-bottom:8px;">🥩</div>
+      <div class="ic-title">ソーキそば</div>
+      <div class="ic-body">スペアリブのせ<br>沖縄全域で人気！</div>
+    </div>
+  </div>
+  <div class="img-frame sm" style="margin-top: 14px; max-width: 560px;">
+    <img class="img-real" src="沖縄講演会用/沖縄そば.JPG" alt="沖縄そば" loading="lazy">
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 44: くわっちーさびら クイズ -->
+<!-- ============================================================ -->
+<div class="slide slide-quiz-bg" id="slide-44" data-slide="44" style="display:none;">
+  <div class="slide-number-badge">44</div>
+  <div style="width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(12px,2.5vh,28px);">
+    <div style="font-size:clamp(18px,3vh,28px);font-weight:900;color:#FFD60A;letter-spacing:0.3em;text-transform:uppercase;">方言クイズ 第4問</div>
+    <div style="font-size:clamp(52px,9.5vw,130px);font-weight:900;color:#fff;text-shadow:0 4px 30px rgba(0,0,0,0.5);text-align:center;line-height:1.1;">「くわっちーさびら」</div>
+    <div style="font-size:clamp(28px,5vw,64px);font-weight:700;color:rgba(255,255,255,0.9);text-align:center;">ってどういう意味？</div>
+    <div style="margin-top:clamp(8px,2vh,20px);">
+      <div style="background:rgba(255,255,255,0.2);border:3px solid rgba(255,255,255,0.5);color:#fff;padding:clamp(8px,1.5vh,14px) clamp(20px,3vw,40px);border-radius:40px;font-size:clamp(18px,2.5vw,30px);font-weight:900;" class="flash">💡 知ってる人は手を挙げて！</div>
+    </div>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 45: くわっちーさびら 答え -->
+<!-- ============================================================ -->
+<div class="slide slide-answer" id="slide-45" data-slide="45" style="display:none;">
+  <div class="slide-number-badge">45</div>
+  <div style="width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(10px,2vh,22px);">
+    <div style="font-size:clamp(22px,4vh,36px);font-weight:700;color:rgba(255,255,255,0.8);">答え</div>
+    <div style="font-size:clamp(42px,7.5vw,100px);font-weight:900;color:#FFD60A;text-shadow:0 4px 20px rgba(0,0,0,0.4);text-align:center;line-height:1;">くわっちーさびら</div>
+    <div style="width:80px;height:5px;background:rgba(255,255,255,0.5);border-radius:3px;"></div>
+    <div style="font-size:clamp(50px,9vw,120px);font-weight:900;color:#fff;text-shadow:0 4px 20px rgba(0,0,0,0.3);text-align:center;line-height:1.1;">いただきます！</div>
+    <div style="background:rgba(255,255,255,0.15);border:2px solid rgba(255,255,255,0.4);border-radius:20px;padding:clamp(10px,1.5vh,18px) clamp(24px,3vw,50px);text-align:center;margin-top:clamp(4px,1vh,12px);">
+      <div style="font-size:clamp(16px,2.5vw,28px);color:rgba(255,255,255,0.85);font-weight:700;">「くわっちー（ごちそう）」を「さびら（します）」<br>→「ごちそうを頂きます！」という意味！</div>
+    </div>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 46: くわっちーさびたん クイズ -->
+<!-- ============================================================ -->
+<div class="slide slide-quiz-bg" id="slide-46" data-slide="46" style="display:none;">
+  <div class="slide-number-badge">46</div>
+  <div style="width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(12px,2.5vh,28px);">
+    <div style="font-size:clamp(18px,3vh,28px);font-weight:900;color:#FFD60A;letter-spacing:0.3em;text-transform:uppercase;">方言クイズ 第5問</div>
+    <div style="font-size:clamp(48px,8.5vw,120px);font-weight:900;color:#fff;text-shadow:0 4px 30px rgba(0,0,0,0.5);text-align:center;line-height:1.1;">「くわっちーさびたん」</div>
+    <div style="font-size:clamp(28px,5vw,64px);font-weight:700;color:rgba(255,255,255,0.9);text-align:center;">ってどういう意味？</div>
+    <div style="margin-top:clamp(8px,2vh,20px);">
+      <div style="background:rgba(255,255,255,0.2);border:3px solid rgba(255,255,255,0.5);color:#fff;padding:clamp(8px,1.5vh,14px) clamp(20px,3vw,40px);border-radius:40px;font-size:clamp(18px,2.5vw,30px);font-weight:900;" class="flash">💡 第4問のヒントを使えばわかるかも！</div>
+    </div>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 47: くわっちーさびたん 答え -->
+<!-- ============================================================ -->
+<div class="slide slide-answer" id="slide-47" data-slide="47" style="display:none;">
+  <div class="slide-number-badge">47</div>
+  <div style="width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(10px,2vh,22px);">
+    <div style="font-size:clamp(22px,4vh,36px);font-weight:700;color:rgba(255,255,255,0.8);">答え</div>
+    <div style="font-size:clamp(38px,6.5vw,88px);font-weight:900;color:#FFD60A;text-shadow:0 4px 20px rgba(0,0,0,0.4);text-align:center;line-height:1;">くわっちーさびたん</div>
+    <div style="width:80px;height:5px;background:rgba(255,255,255,0.5);border-radius:3px;"></div>
+    <div style="font-size:clamp(44px,8vw,110px);font-weight:900;color:#fff;text-shadow:0 4px 20px rgba(0,0,0,0.3);text-align:center;line-height:1.1;">ごちそうさまでした！</div>
+    <div style="background:#FFD60A;color:#023E8A;padding:clamp(8px,1.2vh,14px) clamp(20px,3vw,40px);border-radius:40px;font-size:clamp(16px,2.5vw,28px);font-weight:900;margin-top:clamp(4px,1vh,12px);">修学旅行で使えたら絶対ウケる！🌺</div>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SLIDE 48: まとめ -->
+<!-- ============================================================ -->
+<div class="slide" id="slide-48" data-slide="48" style="display:none; background: linear-gradient(160deg,#023E8A 0%,#0077B6 50%,#06D6A0 100%);">
+  <div class="slide-number-badge">48</div>
+  <div class="slide-label">まとめ</div>
+  <div class="slide-title">沖縄の魅力まとめ</div>
+  <div class="section-divider"></div>
+  <div style="display:flex; flex-direction:column; gap:clamp(6px,1vh,12px); max-width:700px; width:100%; text-align:left;">
+    <div class="timeline-item">
+      <div class="timeline-dot">🍜</div>
+      <div class="timeline-content">
+        <div class="tl-title">独特な食文化</div>
+        <div class="tl-body">亜熱帯・中国・アメリカが混ざり合った沖縄グルメ</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">🥬</div>
+      <div class="timeline-content">
+        <div class="tl-title">チャンプルー文化</div>
+        <div class="tl-body">色々な文化が混ざり合った、沖縄独自の精神</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">🗣️</div>
+      <div class="timeline-content">
+        <div class="tl-title">あたたかい言葉</div>
+        <div class="tl-body">はいさい！にふぇーでーびる！くわっちーさびら！</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">🎵</div>
+      <div class="timeline-content">
+        <div class="tl-title">音楽と三線</div>
+        <div class="tl-body">沖縄の心が詰まった美しい音楽</div>
+      </div>
+    </div>
+  </div>
+  <div class="speech-bubble" style="margin-top: 14px; max-width: 600px;">
+    <p>修学旅行では、沖縄の文化・言葉・<br>人との交流をぜひ楽しんでください！🌺</p>
+  </div>
+  <div class="bottom-deco"></div>
+</div>
+
+<script>
+  const SLIDE_ORDER = [1, 2, 41, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 42, 16, 17, 18, 19, 20, 21, 22, 23, 24, 43, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 49, 36, 37, 44, 45, 46, 47, 38, 39, 48, 40];
+  const TOTAL = SLIDE_ORDER.length; // 49
+  let currentIndex = 0;
+
+  function showSlide(idx) {
+    document.querySelector('[data-slide="' + SLIDE_ORDER[currentIndex] + '"]').style.display = 'none';
+    currentIndex = Math.max(0, Math.min(TOTAL - 1, idx));
+    document.querySelector('[data-slide="' + SLIDE_ORDER[currentIndex] + '"]').style.display = 'flex';
+    document.getElementById('slide-counter').textContent = (currentIndex + 1) + ' / ' + TOTAL;
+    document.getElementById('progress-bar').style.width = ((currentIndex + 1) / TOTAL * 100) + '%';
+    window.scrollTo(0, 0);
+  }
+
+  function nextSlide() { showSlide(currentIndex + 1); }
+  function prevSlide() { showSlide(currentIndex - 1); }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'ArrowDown') { e.preventDefault(); nextSlide(); }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); prevSlide(); }
+  });
+
+  // Swipe support
+  let touchStartX = 0;
+  document.addEventListener('touchstart', function(e){ touchStartX = e.touches[0].clientX; });
+  document.addEventListener('touchend', function(e){
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 60) { dx < 0 ? nextSlide() : prevSlide(); }
+  });
+</script>
+</body>
+</html>
